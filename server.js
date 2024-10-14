@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const noteRoutes = require("./routes/NodeRoutes");
+const noteRoutes = require('./routes/NoteRoutes');
 
 const DB_URL = "mongodb+srv://101015470:NuBrr4mhfg8prAO2@cluster0.l53ef.mongodb.net/comp3123_lab6?retryWrites=true&w=majority";
 mongoose.connect(DB_URL, {
@@ -18,8 +18,11 @@ mongoose.connect(DB_URL, {
 
 const app = express();
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use("/", noteRoutes);  
 
